@@ -60,16 +60,27 @@
 
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
+  #services.xserver.displayManager.sddm.enable = true;
   services.gnome.gnome-keyring.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  #services.xserver.desktopManager.plasma5.enable = true;
+  #services.xserver.windowManager.xmonad.enable = true;
+  #services.xserver.desktopManager.xfce.enable = true;
+  services.xserver.desktopManager.cinnamon.enable = true;
+  services.cinnamon.apps.enable = true;
+  services.xserver.displayManager.lightdm.enable = true;
   #services.xserver.displayManager.gdm.enable = true;
   #services.xserver.desktopManager.gnome.enable = true;
   #services.xserver.displayManager.gdm.wayland = true;
   #services.xserver.displayManager.gdm.nvidiaWayland = true;
-
-
-
+  
+  # Locale
+ i18n.extraLocaleSettings = {
+    "LANG"= "pt_BR.UTF-8";
+    "LANGUAGE"= "pt_BR.UTF-8";
+    "LC_ALL"= "pt_BR.UTF-8";
+  };
+ i18n.defaultLocale = "pt_BR.UTF-8";
+  
   # Configure keymap in X11
   services.xserver.layout = "br";
   # services.xserver.xkbOptions = "eurosign:e";
@@ -91,6 +102,9 @@
     home = "/home/assis";
     description = "Caio Assis";
     shell = pkgs.fish;
+    packages = with pkgs; [
+      vscode
+    ];
   };
 
   # List packages installed in system profile. To search, run:
