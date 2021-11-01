@@ -1,14 +1,13 @@
 { config, pkgs, ... }:
-
 {
 	home.username = "assis";
 	home.homeDirectory = "/home/assis/";
-	programs.home-manager.enable = true;
+	#programs.home-manager.enable = true;
 	home.stateVersion="21.05";
 	home.packages = with pkgs; [
 	#	nodejs-16_x
-		yarn
-		vscode
+		nox
+                direnv
 	];
 	home.sessionVariables = {
 		EDITOR = "vim";

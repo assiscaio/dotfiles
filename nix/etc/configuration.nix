@@ -58,17 +58,27 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
+  programs.sway = {
+    enable = true;
+    extraPackages = with pkgs; [
+    	i3status i3status-rust termite wofi light mako wl-clipboard swaylock swayidle waybar
+    ];    
+  };
+  
+  
 
   # Enable the GNOME Desktop Environment.
   #services.xserver.displayManager.sddm.enable = true;
   services.gnome.gnome-keyring.enable = true;
   #services.xserver.desktopManager.plasma5.enable = true;
-  #services.xserver.windowManager.xmonad.enable = true;
-  #services.xserver.desktopManager.xfce.enable = true;
-  services.xserver.desktopManager.cinnamon.enable = true;
-  services.cinnamon.apps.enable = true;
+  services.xserver.desktopManager.pantheon.enable = true;
+  #services.xserver.displayManager.lightdm.greeters.pantheon.enable = true;
+  #services.xserver.windowManager.sway.enable = true;
+  services.xserver.desktopManager.xfce.enable = true;
+  services.xserver.desktopManager.lxqt.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
   #services.xserver.displayManager.gdm.enable = true;
+  services.gnome.chrome-gnome-shell.enable = true;
   #services.xserver.desktopManager.gnome.enable = true;
   #services.xserver.displayManager.gdm.wayland = true;
   #services.xserver.displayManager.gdm.nvidiaWayland = true;
@@ -98,7 +108,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.assis = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "video" "networkmanager" "wheel" ]; # Enable ‘sudo’ for the user.
     home = "/home/assis";
     description = "Caio Assis";
     shell = pkgs.fish;
@@ -107,15 +117,18 @@
     ];
   };
 
+  nix.trustedUsers = [
+    "assis"
+  ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    firefox
-    git    
-  ];
-  
+	environment.systemPackages = with pkgs; [
+		vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+		wget
+		firefox
+		git    
+	];
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) ["vscode" "vivaldi"];
 
   # Some programs need SUID wrappers, can be configured further or are
