@@ -43,6 +43,7 @@
   programs.nm-applet.enable = true;
   programs.vim.defaultEditor = true;
   programs.fish.enable = true;	
+  environment.variables.EDITOR = "vim";
 	
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -61,22 +62,22 @@
   programs.sway = {
     enable = true;
     extraPackages = with pkgs; [
-    	i3status i3status-rust termite wofi light mako wl-clipboard swaylock swayidle waybar
+    	i3status i3status-rust wofi light mako wl-clipboard swaylock swayidle waybar
     ];    
   };
-  
-  
-
-  # Enable the GNOME Desktop Environment.
-  #services.xserver.displayManager.sddm.enable = true;
+ 
+  services.xserver.displayManager.sddm.enable = true;
   services.gnome.gnome-keyring.enable = true;
-  #services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.desktopManager.pantheon.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+  #services.xserver.desktopManager.mate.enable = true;
+  services.xserver.windowManager.openbox.enable = true;
+  #services.xserver.desktopManager.enlightenment.enable = true;
+  #services.xserver.desktopManager.pantheon.enable = true;
   #services.xserver.displayManager.lightdm.greeters.pantheon.enable = true;
   #services.xserver.windowManager.sway.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
-  services.xserver.desktopManager.lxqt.enable = true;
-  services.xserver.displayManager.lightdm.enable = true;
+  #services.xserver.desktopManager.xfce.enable = true;
+  #services.xserver.desktopManager.lxqt.enable = true;
+  #services.xserver.displayManager.lightdm.enable = true;
   #services.xserver.displayManager.gdm.enable = true;
   services.gnome.chrome-gnome-shell.enable = true;
   #services.xserver.desktopManager.gnome.enable = true;
@@ -113,7 +114,6 @@
     description = "Caio Assis";
     shell = pkgs.fish;
     packages = with pkgs; [
-      vscode
     ];
   };
 

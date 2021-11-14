@@ -12,10 +12,12 @@ alias hgen="home-manager generations"
 #NIX
 alias ni="nix-env -i"
 alias ne="nix-env -e"
+alias lspkg="nix-env -q"
 alias ngen="nix-env --list-generations"
-alias nis="nix-shell"
+alias ns="nix-shell"
 alias nrs="sudo nixos-rebuild switch"
 alias nrb="sudo nixos-rebuild boot"
+alias nredit="sudo nixos-rebuild edit"
 
 alias nso="sudo nix-store --optimize"
 
