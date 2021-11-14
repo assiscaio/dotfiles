@@ -65,24 +65,19 @@
     	i3status i3status-rust wofi light mako wl-clipboard swaylock swayidle waybar
     ];    
   };
+
+  #Nvidia
+  services.xserver.videoDrivers = [ "nvidia" ];
  
-  services.xserver.displayManager.sddm.enable = true;
-  services.gnome.gnome-keyring.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-  #services.xserver.desktopManager.mate.enable = true;
-  services.xserver.windowManager.openbox.enable = true;
-  #services.xserver.desktopManager.enlightenment.enable = true;
-  #services.xserver.desktopManager.pantheon.enable = true;
-  #services.xserver.displayManager.lightdm.greeters.pantheon.enable = true;
-  #services.xserver.windowManager.sway.enable = true;
-  #services.xserver.desktopManager.xfce.enable = true;
-  #services.xserver.desktopManager.lxqt.enable = true;
+  #services.xserver.displayManager.sddm.enable = true;
+  #services.xserver.desktopManager.plasma5.enable = true;
   #services.xserver.displayManager.lightdm.enable = true;
-  #services.xserver.displayManager.gdm.enable = true;
+  services.gnome.gnome-keyring.enable = true;
   services.gnome.chrome-gnome-shell.enable = true;
-  #services.xserver.desktopManager.gnome.enable = true;
-  #services.xserver.displayManager.gdm.wayland = true;
-  #services.xserver.displayManager.gdm.nvidiaWayland = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.displayManager.gdm.wayland = true;
+  services.xserver.displayManager.gdm.nvidiaWayland = true;
   
   # Locale
  i18n.extraLocaleSettings = {
