@@ -8,6 +8,9 @@ alias he="home-manager edit"
 alias hs="home-manager switch"
 alias hp="home-manager packages"
 alias hgen="home-manager generations"
+# Dev
+alias nodesh="nix-shell $HOME/dev_shell/node.nix"
+alias javash="nix-shell $HOME/dev/shell/java.nix"
 
 #NIX
 alias ni="nix-env -i"

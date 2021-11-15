@@ -1,6 +1,6 @@
-NIXOS_ETC_DEST_DIR=$HOME/src/dotfiles/nix/etc
-NIX_HOME_DEST_DIR=$HOME/src/dotfiles/nix/home/
-FISH_HOME_DEST_DIR=$HOME/src/dotfiles/fish
+NIXOS_ETC_DEST_DIR=./nix/etc
+NIX_HOME_DEST_DIR=./nix/home/
+FISH_HOME_DEST_DIR=./fish
 
 mkdir -p $NIXOS_ETC_DEST_DIR
 mkdir -p $NIX_HOME_DEST_DIR

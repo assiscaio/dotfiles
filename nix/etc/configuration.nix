@@ -67,7 +67,7 @@
   };
 
   #Nvidia
-  services.xserver.videoDrivers = [ "nvidia" ];
+  #services.xserver.videoDrivers = [ "nvidia" ];
  
   #services.xserver.displayManager.sddm.enable = true;
   #services.xserver.desktopManager.plasma5.enable = true;
@@ -122,9 +122,15 @@
 		vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
 		wget
 		firefox
-		git    
+		home-manager
+		git
 	];
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) ["vscode" "vivaldi"];
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+	"vscode"
+	"nvidia-x11"
+	"nvidia-settings"
+	"vivaldi"
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

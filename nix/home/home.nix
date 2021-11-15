@@ -12,7 +12,11 @@ in
                 pkgs.direnv
                 unstable.ncspot
                 unstable.vscode
+                unstable.vivaldi
                 unstable.corefonts
+                unstable.fira-code
+                unstable.deluge
+                pkgs.kotatogram-desktop
                 pkgs.alacritty
                 pkgs.nerdfonts
 	];
