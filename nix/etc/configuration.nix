@@ -13,21 +13,16 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.supportedFilesystems = [ "ntfs" ];
+	boot.supportedFilesystems = ["ntfs"];
 
-  fileSystems."/mnt/dados" = 
-  {
-      device = "/dev/sda1";
-      fsType = "ntfs";
-      options = [ "rw" "uid=1000" ];
-  };
-  #boot.loader.grub.useOSProber = true;
-  #boot.loader.grub.enable = true;
-  #boot.loader.grub.device = "/dev/sda";
-  #boot.loader.grub.version = 2;
-
+	fileSystems."/mnt/dados" =
+	{
+		device = "/dev/nvme0n1p4";
+		fsType = "ntfs";
+		options = [ "rw" "uid=1000" ];
+	};
   networking.hostName = "Lacerta"; # Define your hostname.
-  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
   time.timeZone = "America/Bahia";
@@ -35,60 +30,37 @@
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
-  networking.networkmanager.enable = true;
-
   networking.useDHCP = false;
-  networking.interfaces.wlo1.useDHCP = true;
+  networking.interfaces.wlp0s20f3.useDHCP = true;
+	networking.networkmanager.enable = true;
 
-  programs.nm-applet.enable = true;
-  programs.vim.defaultEditor = true;
-  programs.fish.enable = true;	
-  environment.variables.EDITOR = "vim";
-	
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "pt_BR.UTF-8";
   console = {
     font = "Lat2-Terminus16";
     keyMap = "br-abnt2";
   };
-
+  
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  programs.sway = {
-    enable = true;
-    extraPackages = with pkgs; [
-    	i3status i3status-rust wofi light mako wl-clipboard swaylock swayidle waybar
-    ];    
-  };
-
-  #Nvidia
-  #services.xserver.videoDrivers = [ "nvidia" ];
- 
-  #services.xserver.displayManager.sddm.enable = true;
-  #services.xserver.desktopManager.plasma5.enable = true;
-  #services.xserver.displayManager.lightdm.enable = true;
+	services.xserver = {
+		enable = true;
+		desktopManager = {
+			xterm.enable = false;
+			xfce.enable = true;
+			plasma5.enable = true;
+		};
+		displayManager = {
+			defaultSession = "xfce";
+			sddm.enable = true;
+		};
+	};
   services.gnome.gnome-keyring.enable = true;
-  services.gnome.chrome-gnome-shell.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.displayManager.gdm.wayland = true;
-  services.xserver.displayManager.gdm.nvidiaWayland = true;
-  
-  # Locale
- i18n.extraLocaleSettings = {
-    "LANG"= "pt_BR.UTF-8";
-    "LANGUAGE"= "pt_BR.UTF-8";
-    "LC_ALL"= "pt_BR.UTF-8";
-  };
- i18n.defaultLocale = "pt_BR.UTF-8";
-  
   # Configure keymap in X11
-  services.xserver.layout = "br";
+   services.xserver.layout = "br";
   # services.xserver.xkbOptions = "eurosign:e";
 
   # Enable CUPS to print documents.
@@ -105,32 +77,35 @@
   users.users.assis = {
     isNormalUser = true;
     extraGroups = [ "video" "networkmanager" "wheel" ]; # Enable ‘sudo’ for the user.
-    home = "/home/assis";
-    description = "Caio Assis";
-    shell = pkgs.fish;
-    packages = with pkgs; [
-    ];
+		home = "/home/assis";
+		description = "Caio Assis";
+		shell = pkgs.fish;
+		packages = with pkgs; [
+		];
   };
 
-  nix.trustedUsers = [
-    "assis"
-  ];
+	nix.trustedUsers = [
+		"assis"
+	];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-	environment.systemPackages = with pkgs; [
-		vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-		wget
-		firefox
+  environment.systemPackages = with pkgs; [
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    firefox
 		home-manager
 		git
-	];
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-	"vscode"
-	"nvidia-x11"
-	"nvidia-settings"
-	"vivaldi"
   ];
+
+	nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem ( lib.getName pkg) [
+		"vscode"
+		"vivaldi"
+	];
+	
+	programs.vim.defaultEditor = true;
+	programs.fish.enable = true;
+	environment.variables.EDITOR = "vim";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -144,7 +119,6 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-  
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -158,7 +132,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "21.05"; # Did you read the comment?
+  system.stateVersion = "21.11"; # Did you read the comment?
 
 }
 
