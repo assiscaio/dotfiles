@@ -1,4 +1,7 @@
+;; Registers
 (set-register ?e (cons 'file user-init-file))
+(set-register ?h (cons 'file "~/.config/hypr/hyprland.conf"))
+
 (setq user-mail-address "cassis.santos@outlook.com")
 
 (custom-set-variables
