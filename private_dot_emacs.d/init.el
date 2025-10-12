@@ -1,18 +1,29 @@
 ;; Registers
+(setq inhibit-startup-message t)
+
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+;; Line numbers
+;;(global-linum-mode t)
+
+;; Tamanho da fonte
+;;(set-face-attribute 'default nil :height 250)
+
 (set-register ?e (cons 'file user-init-file))
 (set-register ?h (cons 'file "~/.config/hypr/hyprland.conf"))
 
-;;(setq user-mail-address )
+(require 'package)
+(setq package-enable-at-startup nil)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages '(elixir-mode)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(add-to-list 'package-archives
+	     '("melpa" . "https://melpa.org/packages/")
+	     )
+	     
+(package-initialize)
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(use-package try
+  :ensure t)
