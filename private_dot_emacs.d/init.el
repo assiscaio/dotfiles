@@ -1,15 +1,27 @@
 ;; Variaveis
 (global-set-key (kbd "C-c h") 'hippie-expand)
 
+;; Não exibir mensagem inicial
 (setq inhibit-startup-message t)
-;;(setq tab-stop-list 'nil)
-;;
+
+;; Não exibir barra de menu
 (menu-bar-mode -1)
+
+;; Não exibir barra de ferramentas
 (tool-bar-mode -1)
+
+;; Não exibir barra de rolagem
 (scroll-bar-mode -1)
+
+;; Modo de arquivos recentes
+(recentf-mode 1)
+
+
 (load-theme 'leuven t)
+
 ;; Tamanho da fonte
 (set-face-attribute 'default nil :family "JetBrains Mono" :height 110)
+
 ;; Registers
 (set-register ?e (cons 'file user-init-file))
 (set-register ?h (cons 'file "~/.config/hypr/hyprland.conf"))
