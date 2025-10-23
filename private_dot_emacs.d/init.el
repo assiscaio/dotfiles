@@ -1,6 +1,7 @@
 ;; Variaveis
 (global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "C-c h") 'hippie-expand)
+(global-set-key (kbd "C-c f") 'recentf-open-files)
 (require 'projectile)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 (projectile-mode +1)
@@ -27,11 +28,12 @@
 ;; Exibir números de linhas
 (display-line-numbers-mode t)
 
-(load-theme 'wheatgrass t)
-
 ;; Tamanho da fonte
 ;;(set-face-attribute 'default nil :family "JetBrains Mono" :height 120)
-(set-face-attribute 'default nil :family "Consolas" :height 120)
+;; (set-face-attribute 'default nil :family "MesloLGL Nerd Font" :height 120)
+;; (set-face-attribute 'default nil :family "Consolas" :height 120)
+;; (set-face-attribute 'default nil :family "RobotoMono Nerd Font Mono" :height 120)
+(set-face-attribute 'default nil :family "Iosevka NFM" :height 120 :weight 'semi-bold)
 
 ;; Registers
 (set-register ?e (cons 'file user-init-file))
@@ -66,16 +68,25 @@
 (use-package magit
   :ensure t)
 ;;
+
+;; Pacote de temas
+(use-package ef-themes
+  :ensure t)
+  
+(load-theme 'ef-reverie t)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("da4227ca47b0f4f9bddffec324d6d40ecd97a5daaa6d1974020e7284a5f90c81"
-     "2d74de1cc32d00b20b347f2d0037b945a4158004f99877630afc034a674e3ab7"
+   '("19b62f442479efd3ca4c1cef81c2311579a98bbc0f3684b49cdf9321bd5dfdbf"
+     "b9c002dc827fb75b825da3311935c9f505d48d7ee48f470f0aa7ac5d2a595ab2"
+     "ac893acecb0f1cf2b6ccea5c70ea97516c13c2b80c07f3292c21d6eb0cb45239"
+     "e85a354f77ae6c2e47667370a8beddf02e8772a02e1f7edb7089e793f4762a45"
      default))
- '(package-selected-packages '(magit projectile try vertico)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
