@@ -67,6 +67,9 @@
 ;; Desenvolvimento de Software
 (use-package magit
   :ensure t)
+
+(use-package restclient
+  :ensure t)
 ;;
 
 ;; Pacote de temas
