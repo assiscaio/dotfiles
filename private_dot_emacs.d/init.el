@@ -1,4 +1,4 @@
-;; Variaveis e Hooks
+; Variaveis e Hooks
 (global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "C-c h") 'hippie-expand)
 (global-set-key (kbd "C-c f") 'recentf-open-files)
@@ -8,8 +8,8 @@
 (setq inhibit-startup-message t)
 ;; TAB
 (setq-default tab-width 4)
-
-
+;; Deletar seleção com DELETE / C-d
+(delete-selection-mode t)
 ;; Desabilitar ring-bell (feedback sonoro)
 (setq ring-bell-function 'ignore)
 ;; Modes
@@ -26,7 +26,7 @@
 (recentf-mode 1)
 
 ;; Exibir números de linhas
-(display-line-numbers-mode t)
+;;(display-line-numbers-mode t)
 
 ;; Tamanho da fonte
 ;;(set-face-attribute 'default nil :family "JetBrains Mono" :height 120)
@@ -48,6 +48,13 @@
 
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
+;; "VIM-Easymotion"
+(use-package avy
+  :ensure t
+  :bind (
+  ("C-c c" . 'avy-goto-char)
+  ("C-c C-c" . 'avy-goto-char-2) ))
+
 ;; Pacote para exibir sugestoes no mini-buffer
 (use-package which-key
   :ensure t
@@ -56,22 +63,20 @@
 (use-package projectile
   :ensure t
   :init
-  (projectile-mode +1)
-  :custom
-  (projectile-project-search-path '("C:/cpog-src/"))
+  (setq projectile-project-search-path '( ("C:/cpog-src/" . 1)))
+  (projectile-discover-projects-in-search-path)
   :bind
   ("C-c p" . projectile-command-map)
-  ("s-p" . projectile-command-map)
   :config
-  (projectile-mode))
+  (projectile-mode +1))
 
 ;; framework para completion do mini-buffer
 (use-package vertico
   :ensure t
   :init
-  (vertico-mode))
+  (vertico-mode +1))
 
-;; Desenvolvimento de Software
+;; Desenvolvimento de Software [DEV]
 (use-package magit
   :ensure t)
 
@@ -87,11 +92,21 @@
   :hook (
 		 (kotlin-mode . lsp)
 		 (angular-mode . lsp)
+		 ((typescript-ts-mode js-ts-mode) . lsp-deferred)
 		 (lsp-mode . lsp-enable-which-key-integration) )
   :commands lsp)
 (use-package lsp-ui
-  :ensure t
-  :commands lsp-ui-mode)
+  :commands
+  (lsp-ui-mode
+   lsp-ui-doc-show
+   lsp-ui-doc-glance)
+  :bind (:map lsp-mode-map
+			  ("C-c C-d" . 'lsp-ui-doc-glance))
+  :config (setq lsp-ui-doc-enable t
+				lsp-ui-doc-show-with-cursor t
+				lsp-ui-doc-include-signature t
+				lsp-ui-doc-position 'at-point)
+  :ensure t)
 (use-package lsp-treemacs
   :ensure t
   :commands lsp-treemacs-errors-list)
@@ -106,7 +121,7 @@
 (use-package ef-themes
   :ensure t)
 
-(load-theme 'ef-owl t)
+(load-theme 'ef-cyprus t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -122,7 +137,8 @@
 	 default))
  '(package-selected-packages
    '(company dap-mode ef-themes flycheck lsp-mode lsp-treemacs lsp-ui
-			 magit projectile restclient try vertico)))
+			 magit projectile restclient tree-sitter tree-sitter-langs
+			 try vertico)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
