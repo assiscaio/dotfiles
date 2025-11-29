@@ -30,10 +30,9 @@
 
 ;; Tamanho da fonte
 ;;(set-face-attribute 'default nil :family "JetBrains Mono" :height 120)
-;; (set-face-attribute 'default nil :family "MesloLGL Nerd Font" :height 120)
-;; (set-face-attribute 'default nil :family "Consolas" :height 120)
 ;; (set-face-attribute 'default nil :family "RobotoMono Nerd Font Mono" :height 120)
-(set-face-attribute 'default nil :family "Iosevka NFM" :height 120 :weight 'semi-bold)
+;;(set-face-attribute 'default nil :family "Iosevka NFM" :height 120 :weight 'semi-bold)
+(set-face-attribute 'default nil :family "Droid Sans" :height 120 :weight 'semi-bold)
 
 ;; Registers
 ;; (set-register ?e (cons 'file user-init-file))
@@ -63,7 +62,7 @@
 (use-package projectile
   :ensure t
   :init
-  (setq projectile-project-search-path '( ("C:/cpog-src/" . 1)))
+  (setq projectile-project-search-path '( ("~/src/" . 1)))
   (projectile-discover-projects-in-search-path)
   :bind
   ("C-c p" . projectile-command-map)
@@ -121,7 +120,7 @@
 (use-package ef-themes
   :ensure t)
 
-(load-theme 'ef-cyprus t)
+(load-theme 'ef-owl t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -129,7 +128,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("ae20535e46a88faea5d65775ca5510c7385cbf334dfa7dde93c0cd22ed663ba0"
+   '("a3a71b922fb6cbf9283884ac8a9109935e04550bcc5d2a05414a58c52a8ffc47"
+	 "ae20535e46a88faea5d65775ca5510c7385cbf334dfa7dde93c0cd22ed663ba0"
 	 "19b62f442479efd3ca4c1cef81c2311579a98bbc0f3684b49cdf9321bd5dfdbf"
 	 "b9c002dc827fb75b825da3311935c9f505d48d7ee48f470f0aa7ac5d2a595ab2"
 	 "ac893acecb0f1cf2b6ccea5c70ea97516c13c2b80c07f3292c21d6eb0cb45239"
