@@ -113,6 +113,7 @@ alias lsla='eza --icons --color -la --group-directories-first'
 alias lso='eza --color -1 --group-directories-first'
 alias lt='eza --icons --color --tree --level=3 --group-directories-first'
 #GIT
+alias ga='git add'
 alias gst='git status'
 alias gsw='git switch'
 alias gswc='git switch --create'
@@ -126,6 +127,8 @@ alias glgg='git log --graph'
 alias emacs='emacs --no-window-system'
 alias emacws='emacs'
 alias doom="DOOMDDIR=~/.doom-env/doom-private emacs --init-directory=~/.doom-env/emacs-distro"
+alias vemacs="emacs --init-directory=~/.vanilla-emacs-env"
+alias ts='tailscale'
 
 # Zoxide
 # export _ZO_EXCLUDE_DIRS=
