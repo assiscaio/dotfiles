@@ -1,0 +1,38 @@
+workspace "principal"
+workspace "social"
+workspace "jogos"
+//Principal
+window-rule {
+	match title="Picture in picture"
+	default-column-width { proportion 0.3 ;}
+	default-window-height { proportion 0.3 ;}
+	open-floating true
+}
+
+// Social
+window-rule {
+	match app-id="org.telegram.desktop"
+	open-on-workspace "social"
+}
+
+// Jogos
+
+window-rule {
+	match app-id="steam"
+	default-column-width { proportion 0.75 ; }
+	open-on-workspace "jogos"
+}
+
+window-rule {
+	match app-id="Steam"
+	match title="Friends List"
+	default-column-width { proportion 0.25 ; }
+}
+
+window-rule {
+	match app-id="Steam"
+	match title="steam"
+	open-maximized true
+	//default-column-width { proportion 0.65; }
+}
+
