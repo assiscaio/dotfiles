@@ -85,11 +85,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='vim'
+ else
+   export EDITOR='emacs -nw'
+ fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
@@ -119,10 +119,12 @@ alias gsw='git switch'
 alias gswc='git switch --create'
 alias gb='git branch'
 alias glggo='git log --graph --oneline'
+alias glga='git log --all'
 alias glgo='git log --oneline'
 alias glgoa='git log --oneline --all'
 alias glggoa='git log --graph --oneline --all'
 alias glgg='git log --graph'
+alias glgga='git log --graph --all'
 # Apps
 alias emacs='emacs --no-window-system'
 alias emacws='emacs'
