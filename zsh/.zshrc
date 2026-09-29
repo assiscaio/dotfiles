@@ -106,6 +106,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
+alias ytdl_song='yt-dlp --extract-audio --audio-quality 0 --audio-format mp3'
 alias ls='eza --icons --color --group-directories-first'
 alias lsl='eza --icons --color -l --group-directories-first'
 alias lsa='eza --icons --color -a --group-directories-first'
@@ -119,7 +120,6 @@ alias gsw='git switch'
 alias gswc='git switch --create'
 alias gb='git branch'
 alias glggo='git log --graph --oneline'
-alias glga='git log --all'
 alias glgo='git log --oneline'
 alias glgoa='git log --oneline --all'
 alias glggoa='git log --graph --oneline --all'
