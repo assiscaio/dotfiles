@@ -2,3 +2,8 @@ emacs/.emacs.d/elpa
 emacs/.emacs.d/tramp
 emacs/.emacs.d/transient
 emacs/.emacs.d/projectile*
+
+# Emacs backups, auto-save files and lock files
+*~
+\#*#
+.\#*
