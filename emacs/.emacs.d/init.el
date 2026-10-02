@@ -16,6 +16,9 @@
   :config
   (evil-mode 1))
 
+(with-eval-after-load 'evil
+  (setq evil-symbol-word-search t))
+
 (use-package evil-collection
   :after evil
   :config
@@ -30,6 +33,26 @@
   (define-key evil-motion-state-map (kbd "C-j") 'evil-window-down)
   (define-key evil-motion-state-map (kbd "C-k") 'evil-window-up)
   (define-key evil-motion-state-map (kbd "C-l") 'evil-window-right))
+
+(use-package evil-surround
+  :ensure t
+  :after evil
+  :config
+  (global-evil-surround-mode 1))
+
+(use-package evil-snipe
+  :ensure t
+  :after evil
+  :custom
+  (evil-snipe-scope 'buffer)
+  :config
+  (evil-snipe-mode 1))
+
+(use-package evil-easymotion
+  :ensure t
+  :after (evil avy)
+  :config
+  (evil-default-keybinding "s"))
 
 (use-package general
   :after evil
@@ -128,7 +151,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages nil))
+ '(package-selected-packages
+   '(cider doom-modeline doom-themes evil-collection evil-easymotion
+	   evil-snipe evil-surround general magit marginalia orderless
+	   projectile smartparens vertico vterm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

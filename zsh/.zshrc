@@ -124,7 +124,7 @@ alias glgo='git log --oneline'
 alias glgoa='git log --oneline --all'
 alias glggoa='git log --graph --oneline --all'
 alias glgg='git log --graph'
-alias glgga='git log --graph --all'
+alias glga='git log --graph --all'
 # Apps
 alias emacs='emacs --no-window-system'
 alias emacws='emacs'
