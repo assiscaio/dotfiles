@@ -146,6 +146,7 @@ eval "$(atuin init zsh)"
 #antidote load
 
 
+fpath=($HOME/.zsh/completions $fpath)
 autoload -Uz compinit
 compinit
 bindkey -e
@@ -161,8 +162,13 @@ unsetopt BEEP
 
 . /usr/share/zsh/site-functions/fzf-tab.zsh
 
+export XDG_CURRENT_DESKTOP=wlroots
+export XDG_SESSION_TYPE=wayland
+export QT_QPA_PLATFORM="wayland;xcb"
+
 # >>> Codex installer >>>
 export PATH="/home/assis/.local/bin:$PATH"
 # <<< Codex installer <<<
 
 #export PATH="/home/assis/bin:$PATH"
+export GUIX_LOCPATH=/home/assis/.guix-profile/lib/locale
