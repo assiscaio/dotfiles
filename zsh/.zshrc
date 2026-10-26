@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="clean"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -87,9 +87,7 @@ source $ZSH/oh-my-zsh.sh
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
- else
-   export EDITOR='emacs -nw'
- fi
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
@@ -126,11 +124,12 @@ alias glggoa='git log --graph --oneline --all'
 alias glgg='git log --graph'
 alias glga='git log --graph --all'
 # Apps
-alias emacs='emacs --no-window-system'
-alias emacws='emacs'
-alias doom="DOOMDDIR=~/.doom-env/doom-private emacs --init-directory=~/.doom-env/emacs-distro"
-alias vemacs="emacs --init-directory=~/.vanilla-emacs-env"
+#alias emacs='emacs --no-window-system'
+#alias emacws='emacs'
+#alias doom="DOOMDDIR=~/.doom-env/doom-private emacs --init-directory=~/.doom-env/emacs-distro"
+#alias vemacs="emacs --init-directory=~/.vanilla-emacs-env"
 alias ts='tailscale'
+alias drive='proton-drive'
 
 # Zoxide
 # export _ZO_EXCLUDE_DIRS=
@@ -160,7 +159,7 @@ unsetopt SHARE_HISTORY
 setopt CORRECT
 unsetopt BEEP
 
-. /usr/share/zsh/site-functions/fzf-tab.zsh
+#. /usr/share/zsh/site-functions/fzf-tab.zsh
 
 export XDG_CURRENT_DESKTOP=wlroots
 export XDG_SESSION_TYPE=wayland
@@ -172,3 +171,6 @@ export PATH="/home/assis/.local/bin:$PATH"
 
 #export PATH="/home/assis/bin:$PATH"
 export GUIX_LOCPATH=/home/assis/.guix-profile/lib/locale
+
+# opencode
+export PATH=/home/assis/.opencode/bin:$PATH
